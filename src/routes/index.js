@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
 import RegisterPage from "../pages/RegisterPage";
 import CheckEmailPage from "../pages/CheckEmailPage";
@@ -9,38 +9,43 @@ import AuthLayouts from "../layout";
 import Forgotpassword from "../pages/Forgotpassword";
 
 const router = createBrowserRouter([
-{
-    path : "/",
-    element : <App/>,
-    children : [
-        {
-            path : "register",
-            element : <AuthLayouts><RegisterPage/></AuthLayouts>
-        },
-        {
-            path : 'email',
-            element : <AuthLayouts><CheckEmailPage/></AuthLayouts>
-        },
-        {
-            path : 'password',
-            element : <AuthLayouts><CheckPasswordPage/></AuthLayouts>
-        },
-        {
-            path : 'forgot-password',
-            element : <AuthLayouts><Forgotpassword/></AuthLayouts>
-        },
-        {
-            path : "",
-            element : <Home/>,
-            children : [
-                {
-                    path : ':userId',
-                    element : <MessagePage/>
-                }
-            ]
-        }
-    ]
-}
-])
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      // Set the default route to redirect to the email page
+      {
+        path: "/",
+        element: <Navigate to="/email" />,  // Redirect to email page on landing
+      },
+      {
+        path: "email",
+        element: <CheckEmailPage />
+      },
+      {
+        path: "password",
+        element: <CheckPasswordPage />
+      },
+      {
+        path: "forgot-password",
+        element: <Forgotpassword />
+      },
+      {
+        path: "register",
+        element:<RegisterPage />
+      },
+      {
+        path: "home",
+        element: <Home />,
+        children: [
+          {
+            path: ":userId",
+            element: <MessagePage />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
-export default router
+export default router;

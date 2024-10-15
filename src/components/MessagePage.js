@@ -151,7 +151,7 @@ const MessagePage = () => {
     <div style={{ backgroundImage : `url(${backgroundImage})`}} className='bg-no-repeat bg-cover'>
           <header className='sticky top-0 h-16 bg-white flex justify-between items-center px-4'>
               <div className='flex items-center gap-4'>
-                  <Link to={"/"} className='lg:hidden'>
+                  <Link to={"/home"} className='lg:hidden'>
                       <FaAngleLeft size={25}/>
                   </Link>
                   <div>
@@ -268,7 +268,7 @@ const MessagePage = () => {
           {/**send message */}
           <section className='h-16 bg-white flex items-center px-4'>
               <div className='relative '>
-                  <button onClick={handleUploadImageVideoOpen} className='flex justify-center items-center w-11 h-11 rounded-full hover:bg-primary hover:text-white'>
+                  <button onClick={handleUploadImageVideoOpen} className='flex justify-center items-center w-11 h-11 rounded-full hover:bg-primary hover:text-black'>
                     <FaPlus size={20}/>
                   </button>
 

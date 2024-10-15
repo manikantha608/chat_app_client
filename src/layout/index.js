@@ -1,21 +1,30 @@
-import React from 'react'
-import logo from '../assets/logo.png'
+import React from 'react';
+import logo from '../assets/chat.jpg';
 
-const AuthLayouts = ({children}) => {
+const AuthLayouts = ({ children }) => {
   return (
     <>
-        {/* <header className='flex justify-center items-center py-3 h-20 shadow-md bg-white'>
-            <img 
-              src={logo}
-              alt='logo'
-              width={180}
-              height={60}
-            />
-        </header> */}
+      <div className='flex flex-col lg:flex-row min-h-screen '>
+        {/* Logo Section */}
+        <aside className='flex items-center justify-center lg:w-1/3 w-full bg-white pl-24'>
+          <img
+            src={logo}
+            alt='logo'
+            width={280}
+            height={100}
+            className='object-contain'
+          />
+        </aside>
 
-        { children }
+        {/* Main Content Section */}
+        <main className='flex items-center justify-center lg:w-2/3 w-full pr-24'>
+          <div className='w-full max-w-md p-6 bg-white rounded-lg shadow-md '>
+            {children}
+          </div>
+        </main>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default AuthLayouts
+export default AuthLayouts;

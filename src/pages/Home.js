@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { logout, setOnlineUser, setSocketConnection, setUser } from '../redux/userSlice'
 import Sidebar from '../components/Sidebar'
-import logo from '../assets/logo.png'
+import logo from '../assets/chat.jpg'
 import io from 'socket.io-client'
 
 const Home = () => {
@@ -59,7 +59,7 @@ const Home = () => {
   },[])
 
 
-  const basePath = location.pathname === '/'
+  const basePath = location.pathname === '/home'
   return (
     <div className='grid lg:grid-cols-[300px,1fr] h-screen max-h-screen'>
         <section className={`bg-white ${!basePath && "hidden"} lg:block`}>
@@ -72,12 +72,13 @@ const Home = () => {
         </section>
 
 
-        <div className={`justify-center items-center flex-col gap-2 hidden ${!basePath ? "hidden" : "lg:flex" }`}>
+        <div className={`justify-center items-center flex-col gap-2 hidden ${!basePath ? "hidden" : "lg:flex" } bg-gray-50`}>
             <div>
               <img
                 src={logo}
-                width={250}
+                width={300}
                 alt='logo'
+                className='bg-gray-100'
               />
             </div>
             <p className='text-lg mt-2 text-slate-500'>Select user to send message</p>
