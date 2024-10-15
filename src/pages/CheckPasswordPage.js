@@ -33,6 +33,8 @@ const CheckPasswordPage = () => {
 
     const URL = `${process.env.REACT_APP_BACKEND_URL}/api/password`;
 
+    console.log("my pass URL",URL)
+
     setLoading(true); // Set loading to true
 
     try {
@@ -44,6 +46,8 @@ const CheckPasswordPage = () => {
       });
 
       toast.success(response.data.message);
+
+      console.log("pass response",response)
 
       if (response.data.success) {
         dispatch(setToken(response.data.token));

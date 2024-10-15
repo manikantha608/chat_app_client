@@ -14,25 +14,37 @@ const Home = () => {
   const location = useLocation()
 
   console.log('user',user)
-  const fetchUserDetails = async()=>{
+  const fetchUserDetails = async () => {
+    // const dispatch = useDispatch(); // Ensure you have the dispatch method available
+
     try {
-        const URL = `${process.env.REACT_APP_BACKEND_URL}/api/user-details`
+        // Use the backend URL based on the environment
+        const URL = 'http://localhost:8080/api/user-details';
+
+        console.log("Fetching user details from:", URL);
+
         const response = await axios({
-          url : URL,
-          withCredentials : true
-        })
+            url: URL,
+            method: 'GET',
+            withCredentials: true,  // Important for sending cookies
+        });
 
-        dispatch(setUser(response.data.data))
+        console.log("User details response:", response);
 
-        if(response.data.data.logout){
-            dispatch(logout())
-            navigate("/email")
+        if (response.data && response.data.data) {
+            dispatch(setUser(response.data.data));
         }
-        console.log("current user Details",response)
+
+        // Uncomment if logout functionality is needed
+        // if (response.data.data.logout) {
+        //     dispatch(logout());
+        //     navigate("/email");
+        // }
+
     } catch (error) {
-        console.log("error",error)
+        console.error("Error fetching user details:", error);
     }
-  }
+};
 
   useEffect(()=>{
     fetchUserDetails()
@@ -47,7 +59,7 @@ const Home = () => {
     })
 
     socketConnection.on('onlineUser',(data)=>{
-      console.log(data)
+      // console.log(data)
       dispatch(setOnlineUser(data))
     })
 
@@ -72,13 +84,12 @@ const Home = () => {
         </section>
 
 
-        <div className={`justify-center items-center flex-col gap-2 hidden ${!basePath ? "hidden" : "lg:flex" } bg-gray-50`}>
+        <div className={`justify-center items-center flex-col gap-2 hidden ${!basePath ? "hidden" : "lg:flex" }`}>
             <div>
               <img
                 src={logo}
-                width={300}
+                width={250}
                 alt='logo'
-                className='bg-gray-100'
               />
             </div>
             <p className='text-lg mt-2 text-slate-500'>Select user to send message</p>

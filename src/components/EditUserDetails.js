@@ -60,7 +60,7 @@ const EditUserDetails = ({onClose,user}) => {
         e.preventDefault();
         e.stopPropagation();
         try {
-            const URL = `${process.env.REACT_APP_BACKEND_URL}/api/update-user`;
+            const URL = `http://localhost:8080/api/update-user`;
     
             // Create a sanitized data object for submission
             const submissionData = {

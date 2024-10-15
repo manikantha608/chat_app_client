@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux';
 
 const Avatar = ({userId,name,imageUrl,width,height}) => {
     const onlineUser = useSelector(state => state?.user?.onlineUser)
+    console.log("onlineuser",onlineUser)
 
-    //Amit Prajapati
+
 
     let avatarName = ""
 

@@ -23,7 +23,7 @@ const CheckEmailPage = () => {
     e.stopPropagation();
 
     const URL = `${process.env.REACT_APP_BACKEND_URL}/api/email`;
-
+console.log("myemial URL",URL)
     // Email regex pattern for basic validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(data.email)) {
